@@ -1,10 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const Item = ({title, time}: any) => {
+interface ItemProps {
+    title: string;
+    time: string;
+}
+
+const Item = (props: ItemProps) => {
     const ListItem = styled.li`
         padding: 16px;
-        margin: 12px;
+        margin: 12px 0 12px 0;
 
         background-color: #4e45cc;
         color: #f0f0f0;
@@ -26,8 +31,8 @@ const Item = ({title, time}: any) => {
 
     return (
         <ListItem>
-            <Title>{title}</Title>
-            <span>{time}</span>
+            <Title>{props.title}</Title>
+            <span>{props.time}</span>
         </ListItem>
     );
 };

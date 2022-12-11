@@ -15,11 +15,24 @@ const Form = () => {
         margin-bottom: 16px;
     `;
 
+    const Label = styled.label`
+        font-size: 1.3em;
+        font-weight: 700;
+
+        padding-bottom: 8px;
+    `;
+
+    const Input = styled.input`
+        padding: 16px;
+
+        border-radius: 8px;
+    `;
+
     return (
         <Formulary>
             <InputContainer>
-                <label htmlFor="task">Adicione um novo estudo</label>
-                <input
+                <Label htmlFor="task">Adicione um novo estudo:</Label>
+                <Input
                     type="text"
                     name="task"
                     id="task"
@@ -29,8 +42,8 @@ const Form = () => {
             </InputContainer>
 
             <InputContainer>
-                <label htmlFor="time">Tempo</label>
-                <input
+                <Label htmlFor="time">Tempo:</Label>
+                <Input
                     type="time"
                     step="1"
                     name="time"

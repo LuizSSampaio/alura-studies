@@ -1,33 +1,37 @@
 import React from "react";
+import KeyGenerator from "../../logic/KeyGenerator";
+import styled from "styled-components";
 import Item from "../item";
 
-const List = () => {
-    const task = [
-        {
-            title: "React1",
-            time: "02:00:00",
-        },
-        {
-            title: "React2",
-            time: "02:30:00",
-        },
-        {
-            title: "React3",
-            time: "03:00:00",
-        },
-    ];
+interface Items {
+    title: string;
+    time: string;
+}
+
+interface ListProps {
+    tasks: Array<Items>;
+}
+
+
+const List = (props: ListProps) => {
+    const Ul = styled.ul`
+        /* display: flex;
+        flex-direction: column;
+        flex-wrap: wrap; */
+    `;
+
     return (
         <aside>
             <h2>Estudos do dia</h2>
-            <ul>
-                {task.map((item) => (
+            <Ul>
+                {props.tasks.map((item) => (
                     <Item
-                        key={item.title}
+                        key={KeyGenerator(item.title)}
                         title={item.title}
                         time={item.time}
                     />
                 ))}
-            </ul>
+            </Ul>
         </aside>
     );
 };

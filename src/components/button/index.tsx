@@ -1,11 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = (props: any) => {
+interface ButtonProps {
+    primary?: boolean;
+    children: React.ReactNode;
+}
+
+const Button = (props: ButtonProps) => {
     const Button = styled.button`
 
-        background-color: ${props.primary ? "#295be6" : "#e4e4e4"};
+        background-color: ${props.primary ? "#4e45cc" : "#e4e4e4"};
         color: ${props.primary ? "#f0f0f0" : "#000"};
+
+        font-size: 1em;
+        font-weight: 700;
 
         border: none;
         border-radius: 10px;
