@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Button from "../button";
+import Button from "../Button";
+import TextInput from "../Inputs/TextInput";
+import TimeInput from "../Inputs/TimeInput";
 
-const Form = () => {
+interface FormProps {
+    addTask: (
+        title: string,
+        time: string,
+    ) => void,
+}
+
+const Form = (props: FormProps) => {
     const Formulary = styled.form`
         display: flex;
         flex-direction: column;
@@ -22,18 +31,26 @@ const Form = () => {
         padding-bottom: 8px;
     `;
 
-    const Input = styled.input`
-        padding: 16px;
+    const submit = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+        props.addTask({
+            title,
+            time,
+        });
+        setTitle("");
+        setTime("00:00:00");
+    };
 
-        border-radius: 8px;
-    `;
+    const [title, setTitle] = useState("");
+    const [time, setTime] = useState("00:00:00");
 
     return (
-        <Formulary>
+        <Formulary onSubmit={submit}>
             <InputContainer>
                 <Label htmlFor="task">Adicione um novo estudo:</Label>
-                <Input
-                    type="text"
+                <TextInput
+                    value={title}
+                    onChange={value => setTitle(value)}
                     name="task"
                     id="task"
                     placeholder="O que você quer estudar"
@@ -43,8 +60,9 @@ const Form = () => {
 
             <InputContainer>
                 <Label htmlFor="time">Tempo:</Label>
-                <Input
-                    type="time"
+                <TimeInput
+                    value={time}
+                    onChange={value => setTime(value)}
                     step="1"
                     name="time"
                     id="time"

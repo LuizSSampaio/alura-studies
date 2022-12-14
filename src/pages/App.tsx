@@ -1,32 +1,26 @@
-import React from "react";
-import Form from "../components/form";
-import List from "../components/list";
+import React, { useState } from "react";
+import Form from "../components/Form";
+import List from "../components/List";
+import { Items } from "../GlobalInterfaces";
 import { Row, Col, Grid } from "./StyleApp";
 
 const App = () => {
+    const [tasks, setTasks] = useState([{
+        title: "a",
+        time: "00:30:00"
+    }]);
 
-    const tasks = [
-        {
-            title: "React1",
-            time: "02:00:00",
-        },
-        {
-            title: "React2",
-            time: "02:30:00",
-        },
-        {
-            title: "React3",
-            time: "03:00:00",
-        },
-    ];
+    const newTask = (task: Items) => {
+        setTasks([...tasks, task]);
+    };
 
     return tasks.length > 0 ? (
         <Grid>
             <Row>
-                <Col style={{flex: 1}}>
-                    <Form />
+                <Col style={{ flex: 1 }}>
+                    <Form addTask={(task: Items) => newTask(task)} />
                 </Col>
-                <Col style={{flex: 1}} >
+                <Col style={{ flex: 1 }}>
                     <List tasks={tasks} />
                 </Col>
             </Row>
@@ -34,8 +28,8 @@ const App = () => {
     ) : (
         <Grid>
             <Row>
-                <Col style={{flex: 1}}>
-                    <Form />
+                <Col style={{ flex: 1 }}>
+                    <Form addTask={(task: Items) => newTask(task)} />
                 </Col>
             </Row>
         </Grid>

@@ -1,17 +1,12 @@
 import React from "react";
 import KeyGenerator from "../../logic/KeyGenerator";
 import styled from "styled-components";
-import Item from "../item";
-
-interface Items {
-    title: string;
-    time: string;
-}
+import Item from "./Item";
+import { Items } from "../../GlobalInterfaces";
 
 interface ListProps {
     tasks: Array<Items>;
 }
-
 
 const List = (props: ListProps) => {
     const Ul = styled.ul`
