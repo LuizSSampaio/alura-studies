@@ -1,7 +1,7 @@
 import React from "react";
-import KeyGenerator from "../../logic/KeyGenerator";
 import styled from "styled-components";
 import Item from "./Item";
+import { v4 as uuidv4 } from "uuid";
 import { Items } from "../../GlobalInterfaces";
 
 interface ListProps {
@@ -21,7 +21,7 @@ const List = (props: ListProps) => {
             <Ul>
                 {props.tasks.map((item) => (
                     <Item
-                        key={KeyGenerator(item.title)}
+                        key={uuidv4()}
                         title={item.title}
                         time={item.time}
                     />

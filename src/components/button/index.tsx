@@ -5,6 +5,7 @@ interface ButtonProps {
     primary?: boolean,
     trash?: boolean,
     fullWidth?: boolean,
+    onClick?: () => void,
     children: React.ReactNode,
 }
 
@@ -36,7 +37,7 @@ const Button = (props: ButtonProps) => {
         }
     `;
 
-    return <Button>{props.children}</Button>;
+    return <Button onClick={props.onClick}>{props.children}</Button>;
 };
 
 export default Button;
