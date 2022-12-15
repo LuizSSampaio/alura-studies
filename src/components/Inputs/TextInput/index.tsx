@@ -11,12 +11,12 @@ interface TextInputProps {
 }
 
 const TextInput = (props: TextInputProps) => {
-    const changeValue = (event: { target: { value: string; }; }) => {
+    const changeValue = (event: { target: { value: string } }) => {
         props.onChange(event.target.value);
     };
 
     return (
-        <Input 
+        <Input
             value={props.value}
             onChange={changeValue}
             type="text"
@@ -24,7 +24,7 @@ const TextInput = (props: TextInputProps) => {
             id={props.id}
             key={props.id + props.name}
             placeholder={props.placeholder}
-            required={props.required} 
+            required={props.required}
         />
     );
 };
